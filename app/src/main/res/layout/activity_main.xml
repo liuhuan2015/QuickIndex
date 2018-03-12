@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.liuh.learn.quickindex.MainActivity">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
     <com.liuh.learn.quickindex.widget.QuickIndexView
         android:id="@+id/id_quickIndexView"
         android:layout_width="30dp"

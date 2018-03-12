@@ -1,4 +1,4 @@
-package com.liuh.learn.quickindex;
+package com.liuh.learn.quickindex.utils;
 
 import android.content.Context;
 import android.widget.Toast;
