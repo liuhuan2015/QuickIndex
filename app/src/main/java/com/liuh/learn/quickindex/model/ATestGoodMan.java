@@ -1,12 +1,14 @@
 package com.liuh.learn.quickindex.model;
 
+import android.support.annotation.NonNull;
+
 import com.liuh.learn.quickindex.utils.PinyinUtil;
 
 /**
  * Created by huan on 2018/3/12.
  */
 
-public class ATestGoodMan {
+public class ATestGoodMan implements Comparable<ATestGoodMan> {
 
     private String name;
     private String pinyin;
@@ -30,5 +32,10 @@ public class ATestGoodMan {
 
     public void setPinyin(String pinyin) {
         this.pinyin = pinyin;
+    }
+
+    @Override
+    public int compareTo(@NonNull ATestGoodMan aTestGoodMan) {
+        return this.pinyin.compareTo(aTestGoodMan.getPinyin());
     }
 }

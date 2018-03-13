@@ -21,6 +21,10 @@ public class CityListAdapter extends BaseQuickAdapter<ATestGoodMan, BaseViewHold
 
     @Override
     protected void convert(BaseViewHolder helper, ATestGoodMan item) {
+        //比较当前项的拼音首字母和上一项的拼音首字母，如果不相同则显示索引
+
+
+        helper.setText(R.id.tv_city, item.getName());
 
     }
 }
