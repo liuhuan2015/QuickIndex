@@ -1,6 +1,7 @@
 package com.liuh.learn.quickindex.adapter;
 
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -22,8 +23,18 @@ public class CityListAdapter extends BaseQuickAdapter<ATestGoodMan, BaseViewHold
     @Override
     protected void convert(BaseViewHolder helper, ATestGoodMan item) {
         //比较当前项的拼音首字母和上一项的拼音首字母，如果不相同则显示索引
+        String preFirstLetter = null;
+        String curFirstLetter = item.getPinyin().charAt(0) + "";
+        if (helper.getAdapterPosition() != 0) {
+            preFirstLetter = getItem(helper.getAdapterPosition() - 1).getPinyin().charAt(0) + "";
+        }
 
-
+        if (!TextUtils.equals(curFirstLetter, preFirstLetter)) {
+            helper.setGone(R.id.tv_city_index, true);
+            helper.setText(R.id.tv_city_index, curFirstLetter);
+        } else {
+            helper.setGone(R.id.tv_city_index, false);
+        }
         helper.setText(R.id.tv_city, item.getName());
 
     }

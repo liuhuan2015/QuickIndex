@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     private List<ATestGoodMan> datas = new ArrayList<ATestGoodMan>();
 
+    LinearLayoutManager layoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         cityAdapter = new CityListAdapter(datas);
         rvCity.setAdapter(cityAdapter);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(this);
 
         rvCity.setLayoutManager(layoutManager);
 
@@ -55,7 +57,18 @@ public class MainActivity extends AppCompatActivity {
             public void onLetterChanged(String letter) {
                 Log.e("-----------", "letter : " + letter);
 
-                ToastUtil.showToast(MainActivity.this, letter);
+                ToastUtil.showToast(getApplicationContext(), letter);
+                for (int i = 0; i < datas.size(); i++) {
+
+                    if (letter.equals(datas.get(i).getPinyin().charAt(0) + "")) {
+                        rvCity.scrollToPosition(i);
+                        layoutManager.scrollToPositionWithOffset(i, 0);
+                        break;
+                    }
+
+                }
+
+
             }
         });
     }
